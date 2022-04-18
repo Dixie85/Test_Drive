@@ -1,0 +1,38 @@
+[
+  {
+    "id": "th1",
+    "username": "George",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "th2",
+    "username": "Ivan",
+    "password": "sedc",
+    "role": "user"
+  },
+  {
+    "id": "st1",
+    "username": "Anastasja",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "st2",
+    "username": "Boris",
+    "password": "sedc",
+    "role": "user"
+  },
+  {
+    "id": "st3",
+    "username": "Slavko",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "st4",
+    "username": "Diki",
+    "password": "sedc",
+    "role": "user"
+  }
+]

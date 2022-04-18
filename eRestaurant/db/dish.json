@@ -1,0 +1,22 @@
+[
+  {
+    "id": "f14f02e2-2e3e-435f-bda8-d1d8a47b1234",
+    "name": "Ten With Onion",
+    "price": "175MKD"
+  },
+  {
+    "id": "362cb66e-1b91-4ac8-87e4-499d040a7ad5",
+    "name": "Pasta Bolognese",
+    "price": "320MKD"
+  },
+  {
+    "id": "1e2d9242-3bfb-4c87-981c-97b58ae29f4c",
+    "name": "Shattered Sarma",
+    "price": "280MKD"
+  },
+  {
+    "id": "3186557d-3978-4282-9fed-89aaae683c39",
+    "name": "Shattered Sarma",
+    "price": "280MKD"
+  }
+]
