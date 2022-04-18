@@ -1,5 +1,7 @@
 const path = require("path");
 const { v4: uuid } = require("uuid");
+const DishModel = require("./dish-model");
+const dishModel = new DishModel();
 
 const { readFile, writeFile } = require("../utils/file-service");
 
@@ -14,15 +16,29 @@ class OrderModel {
   // Bug returns null,null,null,obj
   addOrder(data) {
     console.log("3 Model, add Order");
+    const userData = data;
+    const existingDishes = dishModel.getDish();
     const orderJsonData = readFile(ORDER_PATH);
-    const newOrder = {
-      id: uuid(),
-      ...data,
-    };
-    const addedOrderData = [...orderJsonData, newOrder];
-    writeFile(ORDER_PATH, addedOrderData);
+    const verifyingExistingDish = existingDishes.filter((dish) => {
+       if (dish.name === userData.dishName) {
+        return dish;
+      }
+    });
+    console.log("verifyingExistingDish",verifyingExistingDish);
+    if (verifyingExistingDish) {
+      const currentTime = new Date().toISOString();
+      const newOrder = {
+        id: uuid(),
+        date: currentTime,
+        ...data,
+      };
+      const addedOrderData = [...orderJsonData, newOrder];
+      writeFile(ORDER_PATH, addedOrderData);
 
-    console.log("Order was added!");
+      console.log("Order was added!");
+    }else {
+      console.log("We don't have that dish on the menu");
+    }
   }
 
   getOrderById(orderId) {
@@ -43,7 +59,7 @@ class OrderModel {
         return { ...order, ...orderData };
       } else {
         return order;
-      };
+      }
     });
     if (orderJsonDataUpdated.length <= 0) {
       return { message: "No such Order found" };
@@ -74,7 +90,7 @@ class OrderModel {
         return order;
       } else {
         return order;
-      };
+      }
     });
     if (orderJsonDataUpdated.length <= 0) {
       return { message: "No such Order found" };
