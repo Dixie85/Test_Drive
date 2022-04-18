@@ -11,7 +11,7 @@ class DishModel {
     const dishes = readFile(DISH_PATH);
     return dishes;
   }
-// Bug returns null,null,null,obj
+
   addDish(data) {
     console.log("3 Model, add Dish");
     const dishJsonData = readFile(DISH_PATH);
@@ -20,8 +20,8 @@ class DishModel {
       ...data,
     };
     const addedDishData = [...dishJsonData, newDish];
-    writeFile(DISH_PATH, addedDishData);
-
+    // writeFile(DISH_PATH, addedDishData);
+ 
     console.log("Dish was added!");
   }
 

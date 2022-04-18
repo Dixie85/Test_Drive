@@ -13,7 +13,7 @@ class OrderModel {
     const orders = readFile(ORDER_PATH);
     return orders;
   }
-  // Bug returns null,null,null,obj
+
   addOrder(data) {
     console.log("3 Model, add Order");
     const userData = data;

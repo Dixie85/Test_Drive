@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const path = require("path");
 const {validateCredentials} = require("../services/credentials-validator");
-const { authSession, dishSession } = require("../sessions/sessions.const");
+const { authSession } = require("../sessions/sessions.const");
 const validateSession = require("../services/session-validator");
 const AuthController = require("../controller/auth-controller");
 const authController = new AuthController();
