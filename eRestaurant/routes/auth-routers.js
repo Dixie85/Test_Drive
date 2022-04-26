@@ -14,17 +14,21 @@ router.get("/", (req,res)=>{
     // res.send({message:"main page"})
 });
 
-router.post("/loging_In", authSession, validateCredentials,  (req,res) => {
-    console.log("Im hiting loging_In router");
+router.post("/loging_In", authSession, validateCredentials, async (req,res) => {
+    try {
+        console.log("Im hiting loging_In router");    
+        const credentials = req.body;
+        const user = await authController.authUser(credentials);
+        console.log("User from logIN");
+        req.session.loggedIn = true;
+        req.session.role = user.role;
+        console.log(req.session)
+        // res.redirect("/logged_In");
+        res.status(200).send({ message: "User is logged in" });
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
     
-    const credentials = req.body;
-    const user = authController.authUser(credentials);
-    console.log("User from logIN");
-    req.session.loggedIn = true;
-    req.session.role = user.role;
-    console.log(req.session)
-    // res.redirect("/logged_In");
-    res.status(200).send({ message: "User is logged in" });
 });
 
 router.get("/logged_In", authSession, validateSession,  (req,res) => {

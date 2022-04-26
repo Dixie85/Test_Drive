@@ -7,6 +7,7 @@ const HOST = process.env.HOST || "localhost";
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(routers);
 
 app.listen(PORT, HOST, () => {
