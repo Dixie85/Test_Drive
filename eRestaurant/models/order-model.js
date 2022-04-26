@@ -30,6 +30,7 @@ class OrderModel {
       const newOrder = {
         id: uuid(),
         date: currentTime,
+        status: "new",
         ...data,
       };
       const addedOrderData = [...orderJsonData, newOrder];
