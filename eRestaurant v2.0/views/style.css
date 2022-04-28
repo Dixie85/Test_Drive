@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://images.creativemarket.com/0.1.0/ps/7353025/1820/965/m1/fpnw/wm1/mrlprmblun0llbxjsotm6xhjqebqmxk4phjir9awtgsdwurcmkyocqzvwl8sptle-.jpg?1574572833&s=d9fa36111cb6d98e72a1a87205ad176c);
+  background-color: rgb(0, 0, 0);
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+}
+
+div {
+  background-color: rgba(64, 198, 153, 0.618);
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  padding: 20px;
+  /* color: aquamarine; */
+  color: rgba(0, 0, 0, 0.73);
+}
+
+input {
+    background-color: antiquewhite;
+}
+
+button{
+    background-color:rgba(211, 211, 52, 0.895);
+    padding: 4.5px;
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "th1",
+    "username": "George",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "th2",
+    "username": "Ivan",
+    "password": "sedc",
+    "role": "user"
+  },
+  {
+    "id": "st1",
+    "username": "Anastasja",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "st2",
+    "username": "Boris",
+    "password": "sedc",
+    "role": "user"
+  },
+  {
+    "id": "st3",
+    "username": "Slavko",
+    "password": "sedc",
+    "role": "admin"
+  },
+  {
+    "id": "st4",
+    "username": "Diki",
+    "password": "sedc",
+    "role": "user"
+  },
+  {
+    "id": "7ef8f355-83f0-4365-a81c-6dcda74b2466",
+    "username": "GeorgeUser",
+    "password": "$2b$10$PRDSI1fslFQ7N.FT5EKjvuxVmIMxIHFgDY42MzuC1PPYDWnNGMV0m",
+    "role": "admin"
+  },
+  {
+    "id": "40efa242-c260-43ba-837a-92857f77167e",
+    "username": "userUser",
+    "password": "$2b$10$ViArg9FG1rR8Q.3PAqWyPe1AKMppGWpzUnS/MFwNgMGvMj7rx8OA."
+  }
+]
