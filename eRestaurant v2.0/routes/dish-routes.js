@@ -2,8 +2,9 @@ const router = require("express").Router();
 const DishController = require("../controller/dish-controller");
 const dishController = new DishController();
 const priceValidator = require("../services/price-validator");
+const { auth } = require("../authentication/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     console.log( "1. DISH route calling controller");
     const dishes = await dishController.getDish();

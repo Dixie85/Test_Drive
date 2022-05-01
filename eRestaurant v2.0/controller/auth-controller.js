@@ -11,6 +11,12 @@ class AuthController {
     console.log("Controller calling the Model");
     return authModel.addUser(credentialsData);
   }
+
+  refreshToken(refreshTokenData){
+    console.log("Controller calling the Model");
+    return authModel.refreshToken(refreshTokenData);
+  }
+  
 }
 
 module.exports = AuthController;

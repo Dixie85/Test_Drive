@@ -5,7 +5,8 @@ const { readFile, writeFile } = require("../utils/file-service");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const { createAccessToken, createRefreshToken } = require("../services/token_service");
-const { addToken } = require("../utils/token_services");
+const { getTokens, addToken}  = require("../utils/token_services");
+const jwt = require("jsonwebtoken");
 
 
 class AuthModel {
@@ -42,6 +43,39 @@ class AuthModel {
     });
   }
 
+  refreshToken(refreshTokenData){
+    return new Promise( async (resolve, reject) => {
+      console.log("3 Model, refreshToken");
+      
+      if (!refreshTokenData) {
+        return reject({message: "No token sent!", status: 401 });
+      }
+
+      const refreshTokens = getTokens();
+
+      if (!refreshTokens.includes(refreshTokenData)) {
+        return reject({ message: "You are unauthorized please log in", status: 403 });
+      }
+
+      jwt.verify(
+        refreshTokenData,
+        process.env.REFRESH_TOKEN_SECRET,
+        (err, user) => {
+          if (err) {
+            return reject({ message: "You are unauthorized please log in", status: 403 })
+          }
+
+          const accessToken = createAccessToken(user);
+
+          resolve({message: "Refreshed token successfully generated new access token",
+            status: 200, 
+           accessToken
+         })
+        }
+      );
+    });
+  }
+
 
   addUser(credentialsData) {
     return new Promise( async (resolve, reject) => {
@@ -51,7 +85,7 @@ class AuthModel {
       const schema = joi.object({
         username: joi.string().min(4),
         password: joi.string().min(4),
-        role: joi.string().exist()
+        // role: joi.string().exist()
       });
     
       const validation = schema.validate(credentialsData);

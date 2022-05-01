@@ -43,6 +43,16 @@ router.get("/logged_In", (req,res) => {
     res.status(200).send({ message: "User is logged in" });
 });
 
+router.post("/refresh_token", async (req, res) => {
+    try {
+        const refreshTokenData = req.body.refreshToken;
+        const {status, message, accessToken} = await authController.refreshToken(refreshTokenData);
+        res.status(status).header("Authorization", accessToken).send({message, accessToken });        
+    } catch (error) {
+        res.status(error.status).send(error.message);
+    }
+});
+
 router.post("/logout", (req, res) => {
     req.session.destroy();
     res.send({ message: "Logout successful" });
