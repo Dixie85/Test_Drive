@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const { validateAdminUser } = require("../services/credentials-validator");
 const OrderController = require("../controller/order-controller");
 const orderController = new OrderController();
 
-router.get("/", validateAdminUser, (req, res) => {
+router.get("/", (req, res) => {
   try {
     console.log("1. DISH route calling controller");
     const orders = orderController.getOrder();
@@ -25,7 +24,7 @@ router.post("/add_order", (req, res) => {
   }
 });
 
-router.get("/:id", validateAdminUser, (req, res) => {
+router.get("/:id", (req, res) => {
   try {
     const orderData = req.params.id;
     const getDish = orderController.getOrderById(orderData);
@@ -35,7 +34,7 @@ router.get("/:id", validateAdminUser, (req, res) => {
   }
 });
 
-router.patch("/:id/update", validateAdminUser, (req, res) => {
+router.patch("/:id/update", (req, res) => {
   try {
     const orderId = req.params.id;
     const updates = req.body;
@@ -46,7 +45,7 @@ router.patch("/:id/update", validateAdminUser, (req, res) => {
   }
 });
 
-router.patch("/:id/:status", validateAdminUser, (req, res) => {
+router.patch("/:id/:status", (req, res) => {
   try {
     const orderId = req.params.id;
     const orderStatus = req.params.status;
@@ -57,7 +56,7 @@ router.patch("/:id/:status", validateAdminUser, (req, res) => {
   }
 });
 
-router.delete("/:id", validateAdminUser, (req, res) => {
+router.delete("/:id", (req, res) => {
   try {
     const orderId = req.params.id;
     const deletedOrder = orderController.removeOrder(orderId);

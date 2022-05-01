@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const {validateAdminUser} = require("../services/credentials-validator");
 const DishController = require("../controller/dish-controller");
 const dishController = new DishController();
 const priceValidator = require("../services/price-validator");
@@ -24,7 +23,7 @@ router.get("/:id", async (req, res) => {
   }	
 });
 
-router.post("/add_dish", priceValidator ,validateAdminUser, async (req, res)=> {
+router.post("/add_dish", priceValidator, async (req, res)=> {
   try {
     console.log("add_dish calling the controller ;)");
     const dishData = req.body;
@@ -36,7 +35,7 @@ router.post("/add_dish", priceValidator ,validateAdminUser, async (req, res)=> {
 
 });
 
-router.patch("/:id/update", priceValidator ,validateAdminUser, async (req, res) => {
+router.patch("/:id/update", priceValidator , async (req, res) => {
   try {
     const dishId = req.params.id;
     const updates = req.body;
@@ -47,7 +46,7 @@ router.patch("/:id/update", priceValidator ,validateAdminUser, async (req, res) 
   }
 });
 
-router.delete("/:id",validateAdminUser, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const dishId = req.params.id;
     const dishDelited = await dishController.removeDish(dishId);

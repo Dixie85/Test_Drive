@@ -1,8 +1,5 @@
 const router = require("express").Router();
 const path = require("path");
-const {validateCredentials} = require("../services/credentials-validator");
-const { authSession } = require("../sessions/sessions.const");
-const validateSession = require("../services/session-validator");
 const AuthController = require("../controller/auth-controller");
 const authController = new AuthController();
 
@@ -26,29 +23,27 @@ router.post("/register",  async (req,res) => {
     }
 });
 
-router.post("/loging_In", authSession, validateCredentials, async (req,res) => {
+router.post("/loging_In", async (req,res) => {
     try {
         console.log("Im hiting loging_In router");    
         const credentials = req.body;
-        const {status, message} = await authController.authUser(credentials);
+        const {status, message, accessToken, refreshToken} = await authController.authUser(credentials);
         console.log("User from logIN");
-        req.session.loggedIn = true;
-        console.log(req.session)
         // res.redirect("/logged_In");
-        res.status(status).send({message});
+        res.status(status).header("Authorization", accessToken).send({message, accessToken, refreshToken});
     } catch (error) {
         res.status(error.status).send(error.message);
     }
     
 });
 
-router.get("/logged_In", authSession, validateSession,  (req,res) => {
+router.get("/logged_In", (req,res) => {
     console.log("from the /logged_In ",req.session)
     console.log("logged_In router");
     res.status(200).send({ message: "User is logged in" });
 });
 
-router.post("/logout", validateSession, (req, res) => {
+router.post("/logout", (req, res) => {
     req.session.destroy();
     res.send({ message: "Logout successful" });
 });

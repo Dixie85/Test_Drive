@@ -4,6 +4,9 @@ const USERS_PATH = path.join(__dirname, "..", "db", "users.json");
 const { readFile, writeFile } = require("../utils/file-service");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
+const { createAccessToken, createRefreshToken } = require("../services/token_service");
+const { addToken } = require("../utils/token_services");
+
 
 class AuthModel {
   authUser(credentialsData) {
@@ -26,7 +29,16 @@ class AuthModel {
         return reject({ message: "Invalid credentials", status: 400 });
       }
 
-      resolve ({ message: "User is logged in.", status:201 });
+     const accessToken = createAccessToken(user);
+     const refreshToken = createRefreshToken(user);
+     addToken(refreshToken);
+
+
+      resolve ({ message: "User is logged in.",
+       status:201,
+       accessToken,
+       refreshToken
+       });
     });
   }
 
