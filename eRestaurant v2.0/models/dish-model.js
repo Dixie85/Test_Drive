@@ -13,7 +13,7 @@ class DishModel {
       console.log("3 Model, get same Dish");
       const dishes = readFile(DISH_PATH);
       if (dishes.length === 0) {
-        reject({ message: "No dishes found" });
+        reject({ message: "No dishes found", status: 400 });
       } else {
         resolve(dishes);
       }
@@ -41,7 +41,7 @@ class DishModel {
     const foundDish = dishJsonData.find((dish) => dish.id === dishId);
     if (!foundDish) {
       console.log("No such dish found");
-      reject({message:"No such dish found"});
+      reject({message:"No such dish found", status: 400 });
     } else {
       console.log("Dish is found");
       resolve(foundDish);
@@ -60,7 +60,7 @@ class DishModel {
       }
     });
     if (dishJsonDataUpdated.length <= 0) {
-      reject({ message: "No such dish found" });
+      reject({ message: "No such dish found", status: 400 });
     } else {
       writeFile(DISH_PATH, dishJsonDataUpdated);
       resolve({message:"Dish has been updated"});
@@ -75,7 +75,7 @@ class DishModel {
       (dish) => dish.id !== dishId
     );
     if (dishJsonDataUpdated.length === dishJsonData.length) {
-      reject({ message: "No such dish found" });
+      reject({ message: "No such dish found", status: 400 });
     } else {
       writeFile(DISH_PATH, dishJsonDataUpdated);
       resolve({message:"Dish has been deleted"});

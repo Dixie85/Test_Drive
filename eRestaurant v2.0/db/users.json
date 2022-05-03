@@ -49,6 +49,13 @@
   {
     "id": "ebda8d43-90b4-4c62-98a5-c2cd29eca2be",
     "username": "Dimitar",
-    "password": "$2b$10$4uQswQiBEnRCiJdW6HtbxuBQUypUyFEJMWvgn0RIPcdxLqYENzMPO"
+    "password": "$2b$10$4uQswQiBEnRCiJdW6HtbxuBQUypUyFEJMWvgn0RIPcdxLqYENzMPO",
+    "role": "admin"
+  },
+  {
+    "id": "870db78f-97d0-4ebe-a6f8-78748b37a241",
+    "username": "DimitarE",
+    "password": "$2b$10$o1.WToer/vGWK3AqP0AEXeERLc2/ocHlVN0rDLhvLZYINyb5THGzy",
+    "role": "user"
   }
 ]

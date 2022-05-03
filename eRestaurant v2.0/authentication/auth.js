@@ -12,11 +12,21 @@ const auth = (req, res, next) => {
     if(err){
       return res.status(403).send({message: "You are not allowed to get this data"})
     }
-    console.log(user);
+    console.log("this is the user from AUTH",user);
     req.user = user
     next()
   })
  
-}
+};
 
-module.exports = {auth}
+const validateAdminUser = (req, res, next) => {
+  const user = req.user.role;
+  if (user !== "admin"){
+    return res.status(401).send({message:"Access denied, only admin users may access this route"})
+  } else {
+    next()
+  }
+};
+
+
+module.exports = {auth, validateAdminUser}

@@ -85,7 +85,7 @@ class AuthModel {
       const schema = joi.object({
         username: joi.string().min(4),
         password: joi.string().min(4),
-        // role: joi.string().exist()
+        role: joi.string().exist()
       });
     
       const validation = schema.validate(credentialsData);

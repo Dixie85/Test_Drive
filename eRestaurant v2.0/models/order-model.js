@@ -13,7 +13,7 @@ class OrderModel {
       console.log("3 Model, get same Order");
       const orders = readFile(ORDER_PATH);
       if (orders.length === 0) {
-        reject({ message: "No orders found" });
+        reject({ message: "No orders found", status: 400 });
       } else {
         resolve(orders);
       }
@@ -45,7 +45,7 @@ class OrderModel {
 
         resolve({ message: "Order was added!" });
       } else {
-        reject({ message: "We don't have that dish on the menu" });
+        reject({ message: "We don't have that dish on the menu", status: 400 });
       }
     });
   }
@@ -55,7 +55,7 @@ class OrderModel {
       const orderJsonData = readFile(ORDER_PATH);
       const foundOrder = orderJsonData.find((order) => order.id === orderId);
       if (!foundOrder) {
-        reject({ message: "No such order found" });
+        reject({ message: "No such order found", status: 400 });
       } else {
         console.log("Order is found");
         resolve(foundOrder);
@@ -74,7 +74,7 @@ class OrderModel {
         }
       });
       if (orderJsonDataUpdated.length <= 0) {
-        reject({ message: "No such Order found" });
+        reject({ message: "No such Order found", status: 400 });
       } else {
         writeFile(ORDER_PATH, orderJsonDataUpdated);
         resolve({ message: "Order has been updated" });
@@ -89,7 +89,7 @@ class OrderModel {
         (order) => order.id !== orderId
       );
       if (orderJsonDataUpdated.length === orderJsonData.length) {
-        reject({ message: "No such Order found" });
+        reject({ message: "No such Order found", status: 400 });
       } else {
         writeFile(ORDER_PATH, orderJsonDataUpdated);
         resolve({ message: "Order has been deleted" });
@@ -109,7 +109,7 @@ class OrderModel {
         }
       });
       if (orderJsonDataUpdated.length <= 0) {
-        reject({ message: "No such Order found" });
+        reject({ message: "No such Order found", status: 400 });
       } else {
         writeFile(ORDER_PATH, orderJsonDataUpdated);
         resolve({ message: "Order has been updated" });
