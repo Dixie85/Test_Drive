@@ -57,5 +57,11 @@
     "username": "DimitarE",
     "password": "$2b$10$o1.WToer/vGWK3AqP0AEXeERLc2/ocHlVN0rDLhvLZYINyb5THGzy",
     "role": "user"
+  },
+  {
+    "id": "57c3e808-e138-4750-b3ed-efa12d8759f1",
+    "username": "Mirjana",
+    "password": "$2b$10$Agm20leQAYAXq5aMxTwWK.mdPtTumPERtHruXQ1MupOp0IWYklCnO",
+    "role": "admin"
   }
 ]

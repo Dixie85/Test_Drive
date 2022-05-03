@@ -12,7 +12,7 @@ body {
   background-size: cover;
 }
 
-div {
+#logInformDiv {
   background-color: rgba(64, 198, 153, 0.618);
   position: absolute;
   top: 35%;
@@ -22,6 +22,17 @@ div {
   color: rgba(0, 0, 0, 0.73);
 }
 
+.registerFormDiv{
+  background-color: rgb(64, 198, 153);
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  padding: 20px;
+  /* color: aquamarine; */
+  color: rgba(0, 0, 0, 0.73);
+
+}
+
 input {
     background-color: antiquewhite;
 }
@@ -29,4 +40,11 @@ input {
 button{
     background-color:rgba(211, 211, 52, 0.895);
     padding: 4.5px;
+}
+
+#register{
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
